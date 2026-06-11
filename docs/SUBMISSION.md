@@ -8,12 +8,16 @@
 
 **Hosted URL:** <CLOUD RUN URL — fill after deploy>
 
-**Repo:** <GITHUB URL — fill after push> (public, MIT license at root)
+**Repo:** https://github.com/bansalbhunesh/sahaya (public, MIT license detected by GitHub)
 
 **Video:** <YOUTUBE URL — fill after upload>
 
 **Built with:** google-cloud-agent-builder, adk, gemini-3, mongodb-atlas,
 mongodb-mcp-server, model-context-protocol, cloud-run, fastapi, python, leaflet
+
+**Images to upload/embed on the Devpost page** (also available at public URLs):
+- Ops console: https://raw.githubusercontent.com/bansalbhunesh/sahaya/main/docs/dashboard.png
+- Architecture: https://raw.githubusercontent.com/bansalbhunesh/sahaya/main/docs/architecture.png
 
 ---
 
@@ -69,6 +73,34 @@ hosted URL and watch it get dispatched.
 MCP turns "an LLM with a database" into "an operator with hands" — the tool-filter
 boundary is where safety policy lives, and an explicit numbered doctrine in the
 instruction beats freeform multi-agent choreography for reliability under pressure.
+
+### How we hit each judging criterion
+
+**Technological Implementation.** A genuine agentic loop, not a chat wrapper: ADK
+Runner orchestrating Gemini 3 through 20+ MCP tool calls per cycle — `find`,
+`$geoNear` aggregations, `insert-many`, `update-many` — against live Atlas data,
+with least-privilege tool filtering (the agent cannot delete or drop), verify-
+before-write inventory math, bounded cycle budgets, and a journaled event stream.
+Single container on Cloud Run (Python + Node for the stdio MCP server). Fully
+reproducible: clone, two env vars, `python -m app.seed`, run. A smoke test
+(`python -m app.smoke`) asserts real end-to-end mutations.
+
+**Design.** A purpose-built ops console: dark control-room aesthetic, live Mumbai
+map (severity-coded markers, shelter occupancy, depot stock), real-time agent
+activity feed (every decision in plain language — the human-oversight surface),
+dispatch-order cards, and a commander's sitrep panel. Zero-build vanilla JS;
+loads instantly for judges.
+
+**Potential Impact.** Urban flooding affects millions every monsoon; coordination
+latency — not resource scarcity — is the documented failure mode. Sahaya maps 1:1
+onto real control-room workflow (triage → dedupe → match → dispatch → sitrep) and
+generalizes to any disaster-response or logistics-dispatch domain.
+
+**Quality of the Idea.** "The control-room operator that never sleeps": an agent
+that acts on real systems under human oversight — exactly the brief. Domain
+texture matters: multilingual duplicate SOS (Hinglish + English), real Mumbai
+geography, NDRF/BMC depot semantics. Not a toy, and visibly not canned — judges
+can file their own SOS on the hosted URL and watch it get dispatched.
 
 ### What's next
 WhatsApp/SMS ingestion (the real SOS channel in India), Atlas Vector Search for

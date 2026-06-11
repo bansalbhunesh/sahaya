@@ -8,6 +8,12 @@ Built for the **Google Cloud Rapid Agent Hackathon 2026 — MongoDB track**.
 **Gemini 3** plans · **Google Cloud Agent Builder (ADK)** orchestrates · the
 **MongoDB MCP server** is the agent's hands · **MongoDB Atlas** is the source of truth.
 
+![Gemini 3](https://img.shields.io/badge/Gemini%203-flash--preview-8E75B2?logo=googlegemini&logoColor=white)
+![Agent Builder](https://img.shields.io/badge/Google%20Cloud-Agent%20Builder%20(ADK)-4285F4?logo=googlecloud&logoColor=white)
+![MongoDB MCP](https://img.shields.io/badge/MongoDB-MCP%20Server-00ED64?logo=mongodb&logoColor=white)
+![Cloud Run](https://img.shields.io/badge/Deployed-Cloud%20Run-4285F4?logo=googlecloud&logoColor=white)
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
+
 ![Sahaya ops console](docs/dashboard.png)
 
 ## The problem
@@ -34,12 +40,7 @@ or drop anything. Every decision is journaled to a live activity feed.
 
 ## Architecture
 
-```
-citizen SOS ─► FastAPI (Cloud Run) ─► ADK Runner ─► LlmAgent (Gemini 3)
-                   │                                    │ McpToolset (stdio)
-                   │ dashboard reads                    ▼
-                   └────────────► MongoDB Atlas ◄── mongodb-mcp-server
-```
+![Architecture](docs/architecture.png)
 
 See [docs/DESIGN.md](docs/DESIGN.md) for the full design, failure handling, and
 human-in-the-loop controls; [docs/RESEARCH.md](docs/RESEARCH.md) for why this track.

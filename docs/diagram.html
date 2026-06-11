@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;800&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  body { margin:0; background:#0a0e14; width:1500px; height:840px; font-family:Sora,sans-serif; }
+  svg text { font-family: Sora, sans-serif; }
+  svg .mono { font-family: "IBM Plex Mono", monospace; }
+</style></head>
+<body>
+<svg width="1500" height="840" viewBox="0 0 1500 840">
+  <defs>
+    <marker id="arr" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+      <path d="M0,0 L10,4 L0,8 z" fill="#22d3ee"/>
+    </marker>
+    <marker id="arrg" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+      <path d="M0,0 L10,4 L0,8 z" fill="#34d399"/>
+    </marker>
+  </defs>
+
+  <text x="750" y="52" text-anchor="middle" fill="#e6edf3" font-size="30" font-weight="800" letter-spacing="6">SAHAYA — SYSTEM ARCHITECTURE</text>
+  <text x="750" y="82" text-anchor="middle" fill="#8b98a9" font-size="15">Gemini 3 plans · Agent Builder (ADK) orchestrates · MongoDB MCP server acts · Atlas is the source of truth</text>
+
+  <!-- Citizen -->
+  <rect x="40" y="180" width="220" height="110" rx="12" fill="#11161f" stroke="#1f2937" stroke-width="2"/>
+  <text x="150" y="225" text-anchor="middle" fill="#e6edf3" font-size="17" font-weight="600">Citizens / Control room</text>
+  <text x="150" y="252" text-anchor="middle" fill="#8b98a9" font-size="13" class="mono">SOS reports · oversight</text>
+
+  <!-- Cloud Run box -->
+  <rect x="330" y="130" width="640" height="560" rx="16" fill="#0d1320" stroke="#164e63" stroke-width="2.5"/>
+  <text x="650" y="166" text-anchor="middle" fill="#67e8f9" font-size="15" font-weight="600" letter-spacing="2">GOOGLE CLOUD RUN · asia-south1</text>
+
+  <!-- FastAPI -->
+  <rect x="370" y="195" width="250" height="170" rx="12" fill="#11161f" stroke="#1f2937" stroke-width="2"/>
+  <text x="495" y="228" text-anchor="middle" fill="#e6edf3" font-size="17" font-weight="600">FastAPI control plane</text>
+  <text x="495" y="258" text-anchor="middle" fill="#8b98a9" font-size="13" class="mono">/ ops-console dashboard</text>
+  <text x="495" y="280" text-anchor="middle" fill="#8b98a9" font-size="13" class="mono">/api/sos · /api/run</text>
+  <text x="495" y="302" text-anchor="middle" fill="#8b98a9" font-size="13" class="mono">/api/state · /api/events</text>
+  <text x="495" y="338" text-anchor="middle" fill="#facc15" font-size="12.5">live activity journal = human oversight</text>
+
+  <!-- ADK agent -->
+  <rect x="370" y="420" width="250" height="230" rx="12" fill="#11161f" stroke="#0e7490" stroke-width="2.5"/>
+  <text x="495" y="455" text-anchor="middle" fill="#e6edf3" font-size="17" font-weight="600">ADK LlmAgent</text>
+  <text x="495" y="478" text-anchor="middle" fill="#67e8f9" font-size="13" class="mono">Agent Builder · Runner</text>
+  <text x="495" y="510" text-anchor="middle" fill="#8b98a9" font-size="13">Five-phase ops doctrine:</text>
+  <text x="495" y="534" text-anchor="middle" fill="#e6edf3" font-size="13.5" class="mono">INGEST → TRIAGE → MATCH</text>
+  <text x="495" y="556" text-anchor="middle" fill="#e6edf3" font-size="13.5" class="mono">→ DISPATCH → SITREP</text>
+  <text x="495" y="590" text-anchor="middle" fill="#facc15" font-size="12.5">bounded cycles · no delete powers</text>
+  <text x="495" y="612" text-anchor="middle" fill="#facc15" font-size="12.5">verify-before-write doctrine</text>
+
+  <!-- Gemini -->
+  <rect x="700" y="420" width="240" height="110" rx="12" fill="#11161f" stroke="#7c3aed" stroke-width="2.5"/>
+  <text x="820" y="462" text-anchor="middle" fill="#e6edf3" font-size="17" font-weight="600">Gemini 3</text>
+  <text x="820" y="488" text-anchor="middle" fill="#c4b5fd" font-size="13" class="mono">gemini-3-flash-preview</text>
+  <text x="820" y="510" text-anchor="middle" fill="#8b98a9" font-size="12.5">severity · dedupe · sizing · sitrep</text>
+
+  <!-- MCP server -->
+  <rect x="700" y="560" width="240" height="90" rx="12" fill="#11161f" stroke="#00ed64" stroke-width="2.5"/>
+  <text x="820" y="597" text-anchor="middle" fill="#e6edf3" font-size="16" font-weight="600">MongoDB MCP server</text>
+  <text x="820" y="622" text-anchor="middle" fill="#8b98a9" font-size="12.5" class="mono">stdio · npx · least-privilege</text>
+
+  <!-- Atlas -->
+  <rect x="1060" y="330" width="380" height="330" rx="16" fill="#0d1a14" stroke="#00ed64" stroke-width="2.5"/>
+  <text x="1250" y="370" text-anchor="middle" fill="#00ed64" font-size="16" font-weight="600" letter-spacing="2">MONGODB ATLAS · AWS MUMBAI</text>
+  <text x="1250" y="400" text-anchor="middle" fill="#8b98a9" font-size="13">single source of truth · 2dsphere indexes</text>
+  <g class="mono" font-size="13.5">
+    <rect x="1100" y="425" width="140" height="40" rx="8" fill="#11161f" stroke="#1f2937"/>
+    <text x="1170" y="450" text-anchor="middle" fill="#e6edf3">reports</text>
+    <rect x="1260" y="425" width="140" height="40" rx="8" fill="#11161f" stroke="#1f2937"/>
+    <text x="1330" y="450" text-anchor="middle" fill="#e6edf3">shelters</text>
+    <rect x="1100" y="480" width="140" height="40" rx="8" fill="#11161f" stroke="#1f2937"/>
+    <text x="1170" y="505" text-anchor="middle" fill="#e6edf3">depots</text>
+    <rect x="1260" y="480" width="140" height="40" rx="8" fill="#11161f" stroke="#1f2937"/>
+    <text x="1330" y="505" text-anchor="middle" fill="#e6edf3">assignments</text>
+    <rect x="1180" y="535" width="140" height="40" rx="8" fill="#11161f" stroke="#1f2937"/>
+    <text x="1250" y="560" text-anchor="middle" fill="#e6edf3">sitreps</text>
+  </g>
+  <text x="1250" y="625" text-anchor="middle" fill="#8b98a9" font-size="12.5" class="mono">$geoNear matching · $inc inventory</text>
+
+  <!-- Arrows -->
+  <line x1="260" y1="235" x2="365" y2="250" stroke="#22d3ee" stroke-width="2.5" marker-end="url(#arr)"/>
+  <text x="305" y="222" text-anchor="middle" fill="#8b98a9" font-size="12" class="mono">POST /api/sos</text>
+
+  <line x1="495" y1="365" x2="495" y2="415" stroke="#22d3ee" stroke-width="2.5" marker-end="url(#arr)"/>
+  <text x="560" y="396" text-anchor="middle" fill="#8b98a9" font-size="12" class="mono">/api/run → cycle</text>
+
+  <line x1="620" y1="475" x2="695" y2="475" stroke="#22d3ee" stroke-width="2.5" marker-end="url(#arr)"/>
+  <text x="657" y="462" text-anchor="middle" fill="#8b98a9" font-size="12" class="mono">reason</text>
+
+  <line x1="620" y1="600" x2="695" y2="602" stroke="#34d399" stroke-width="2.5" marker-end="url(#arrg)"/>
+  <text x="657" y="588" text-anchor="middle" fill="#8b98a9" font-size="12" class="mono">McpToolset</text>
+
+  <line x1="940" y1="602" x2="1055" y2="540" stroke="#34d399" stroke-width="2.5" marker-end="url(#arrg)"/>
+  <text x="1000" y="595" text-anchor="middle" fill="#8b98a9" font-size="12" class="mono">find · aggregate</text>
+  <text x="1000" y="612" text-anchor="middle" fill="#8b98a9" font-size="12" class="mono">insert · update</text>
+
+  <path d="M 620 290 C 900 290, 980 400, 1056 430" fill="none" stroke="#475569" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#arr)"/>
+  <text x="900" y="278" text-anchor="middle" fill="#64748b" font-size="12" class="mono">dashboard reads (pymongo, read-only)</text>
+
+  <text x="750" y="790" text-anchor="middle" fill="#475569" font-size="13" class="mono">every agent write flows through the MCP server — the agent has no other hands</text>
+</svg>
+</body></html>
