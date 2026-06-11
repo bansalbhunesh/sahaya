@@ -8,6 +8,8 @@ Built for the **Google Cloud Rapid Agent Hackathon 2026 — MongoDB track**.
 **Gemini 3** plans · **Google Cloud Agent Builder (ADK)** orchestrates · the
 **MongoDB MCP server** is the agent's hands · **MongoDB Atlas** is the source of truth.
 
+![Sahaya ops console](docs/dashboard.png)
+
 ## The problem
 
 During urban floods in India, coordination — not resources — is what fails. Control

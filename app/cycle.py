@@ -95,7 +95,7 @@ class CycleRunner:
             app_name="sahaya", user_id=user_id, session_id=f"cycle-{uuid.uuid4().hex[:8]}"
         )
         now = datetime.datetime.now(datetime.timezone.utc).isoformat()
-        _emit("cycle", "OPS CYCLE started — agent taking control")
+        _emit("cycle", "OPS CYCLE started - agent taking control")
         message = types.Content(
             role="user",
             parts=[types.Part(text=f"RUN ONE OPS CYCLE. Current time: {now}")],
@@ -110,10 +110,10 @@ class CycleRunner:
                 fc = getattr(part, "function_call", None)
                 if fc is not None:
                     tool_calls += 1
-                    _emit("tool", f"→ {fc.name} {_describe_args(fc.args or {})}")
+                    _emit("tool", f">> {fc.name} {_describe_args(fc.args or {})}")
                 fr = getattr(part, "function_response", None)
                 if fr is not None:
-                    _emit("result", f"✓ {fr.name} responded")
+                    _emit("result", f"OK {fr.name} responded")
                 text = getattr(part, "text", None)
                 if text and text.strip():
                     if event.is_final_response():
@@ -121,7 +121,7 @@ class CycleRunner:
                     else:
                         _emit("thought", text.strip())
         _emit("sitrep", final_text or "Cycle finished with no commander report.")
-        _emit("cycle", f"OPS CYCLE complete — {tool_calls} tool actions")
+        _emit("cycle", f"OPS CYCLE complete - {tool_calls} tool actions")
         log.info('{"event":"cycle_done","tool_calls":%d}', tool_calls)
         return {"final": final_text, "tool_calls": tool_calls}
 
