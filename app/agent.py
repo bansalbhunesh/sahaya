@@ -105,13 +105,30 @@ def _npx_command() -> str:
     return "npx"
 
 
+def _model():
+    """Native Gemini API by default; OpenAI-compatible gateway as fallback.
+
+    The submission path is the native Gemini API (GOOGLE_API_KEY). The gateway
+    path (SAHAYA_LLM_BASE/SAHAYA_LLM_KEY) exists so demos never block on key
+    logistics — same Gemini 3 model either way.
+    """
+    base = os.environ.get("SAHAYA_LLM_BASE", "")
+    key = os.environ.get("SAHAYA_LLM_KEY", "")
+    if base and key and not os.environ.get("GOOGLE_API_KEY"):
+        from google.adk.models.lite_llm import LiteLlm
+
+        log.info('{"event":"model_via_gateway","base":"%s"}', base)
+        return LiteLlm(model=f"openai/google/{MODEL}", api_base=base, api_key=key)
+    return MODEL
+
+
 def build_agent() -> LlmAgent:
     uri = os.environ.get("MDB_MCP_CONNECTION_STRING", "")
     if not uri:
         raise RuntimeError("MDB_MCP_CONNECTION_STRING is not set; agent cannot start.")
     log.info('{"event":"agent_build","model":"%s"}', MODEL)
     return LlmAgent(
-        model=MODEL,
+        model=_model(),
         name="sahaya_ops_controller",
         description="Autonomous flood-response operations controller",
         instruction=OPS_PROTOCOL,

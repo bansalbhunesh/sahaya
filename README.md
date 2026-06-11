@@ -50,7 +50,7 @@ Prereqs: Python 3.12+, Node 20.19+, a free [MongoDB Atlas](https://cloud.mongodb
 cluster, a [Google AI Studio](https://aistudio.google.com) API key.
 
 ```bash
-git clone https://github.com/bhuneshbansal/sahaya && cd sahaya
+git clone https://github.com/bansalbhunesh/sahaya && cd sahaya
 python -m venv .venv && . .venv/bin/activate   # Windows: .venv\Scripts\Activate.ps1
 pip install -r requirements.txt
 cp .env.example .env                            # fill in your two secrets
