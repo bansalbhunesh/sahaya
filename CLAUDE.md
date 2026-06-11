@@ -29,6 +29,7 @@ monsoon scenario. Collections: `reports`, `shelters`, `depots`, `assignments`,
 python -m app.seed          # reset + seed the demo scenario (destructive on db 'sahaya')
 uvicorn app.server:app --reload --port 8080   # run locally → http://localhost:8080
 python -m app.smoke         # end-to-end smoke: seed → one agent cycle → assert assignments exist
+pytest tests/ -q            # API tests (needs reachable Mongo; agent/LLM not exercised)
 ```
 
 Deploy (Cloud Run, from repo root — Dockerfile installs Node for npx):

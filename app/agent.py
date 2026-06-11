@@ -7,6 +7,7 @@ import shutil
 from dotenv import load_dotenv
 from google.adk.agents import LlmAgent
 from google.adk.tools.mcp_tool import McpToolset, StdioConnectionParams
+from google.genai import types
 from mcp import StdioServerParameters
 
 load_dotenv()
@@ -132,6 +133,8 @@ def build_agent() -> LlmAgent:
         name="sahaya_ops_controller",
         description="Autonomous flood-response operations controller",
         instruction=OPS_PROTOCOL,
+        # Ops, not poetry: low temperature for consistent triage and arithmetic.
+        generate_content_config=types.GenerateContentConfig(temperature=0.2),
         tools=[
             McpToolset(
                 connection_params=StdioConnectionParams(

@@ -6,6 +6,7 @@ import logging
 import uuid
 from collections import deque
 
+from google.adk.agents.run_config import RunConfig
 from google.adk.runners import Runner
 from google.adk.sessions import InMemorySessionService
 from google.genai import types
@@ -103,7 +104,12 @@ class CycleRunner:
         final_text = ""
         tool_calls = 0
         async for event in runner.run_async(
-            user_id=user_id, session_id=session.id, new_message=message
+            user_id=user_id,
+            session_id=session.id,
+            new_message=message,
+            # Hard cap alongside the wall-clock budget: a confused model can
+            # never spiral into an unbounded tool loop.
+            run_config=RunConfig(max_llm_calls=40),
         ):
             content = getattr(event, "content", None)
             for part in getattr(content, "parts", None) or []:
